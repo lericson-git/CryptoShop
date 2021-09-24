@@ -1,4 +1,4 @@
-package com.example.cryptoshop_backend.accessingdatamysql;
+package com.example.cryptoshop_backend.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
