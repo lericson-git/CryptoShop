@@ -33,10 +33,9 @@ public class BitcoinTxController {
             return bitcoinTxRepository.findAll();
         }
 
-        @PostMapping(path="/txById")
+        @PostMapping(path="/txByUserId")
         public @ResponseBody Iterable<BitcoinTx> getTxById (@RequestParam Integer userId) {
-            //Method not working properly, gets txs by ID, not by USER_ID
-            return (bitcoinTxRepository.findAllById(Collections.singleton(userId)));
+            return (bitcoinTxRepository.findByUserId(userId));
         }
     }
 }
