@@ -12,6 +12,7 @@ import com.google.gson.annotations.SerializedName;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.Post;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,18 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
         TextView apiText1 = findViewById(R.id.activity_main_textView1);
 
-        GetPostApi().getFirstPost().enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                apiText1.setText(response.body().getBigText());
-            }
-
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                // Use to log our failures by using t
-                //here
-            }
-        });
-
+        GetPostApi().getFirstPost().enqueue(new SlimCallback<Post>(response -> {
+            String result = "ID:  "+ response.getId()
+                    +"\n  Title:  "+ response.getTitle()
+                    +"\n  Body:    "+ response.getBigText();
+            apiText1.setText(result);
+        }, "CustomTagForFirstApi"));
     }
 }
