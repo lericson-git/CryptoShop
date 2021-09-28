@@ -16,7 +16,25 @@ public class User {
     private String hashed_pass;
     private int bought_p;
     private int sold_p;
-    private double btc_balance;
+    private String btcAddress;
+    private String btcXpub;
+
+
+    public String getBtcAddress() {
+        return btcAddress;
+    }
+
+    public void setBtcAddress(String btc_address) {
+        this.btcAddress = btc_address;
+    }
+
+    public String getBtcXpub() {
+        return btcXpub;
+    }
+
+    public void setBtcXpub(String btc_xpub) {
+        this.btcXpub = btc_xpub;
+    }
 
     public String getUsername() {
         return username;
@@ -48,14 +66,6 @@ public class User {
 
     public void setSold_p(int sold_p) {
         this.sold_p = sold_p;
-    }
-
-    public double getBtc_balance() {
-        return btc_balance;
-    }
-
-    public void setBtc_balance(double btc_balance) {
-        this.btc_balance = btc_balance;
     }
 
     public Integer getId() {
