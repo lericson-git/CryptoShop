@@ -63,10 +63,5 @@ public class UserController {
             else
                 return ResponseEntity.ok("Login succesfull");
         }
-
-        /*@PostMapping(path="/userByEmail")
-        public @ResponseBody User getTxById (@RequestParam String email) {
-            return (userRepository.findByEmail(email));
-        }*/
     }
 }
