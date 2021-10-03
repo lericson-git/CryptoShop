@@ -23,10 +23,6 @@ public class ApiClientFactory {
         return GetApiClientSeed().create(PostApi.class);
     }
 
-    public static TriviaApi GetTriviaApi(){
-        return GetApiClientSeed().create(TriviaApi.class);
-    }
-
     public static UserApi GetUserApi(){
         return GetApiClientSeed().create(UserApi.class);
     }

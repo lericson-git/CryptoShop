@@ -24,22 +24,20 @@ public class activity_signup extends AppCompatActivity {
         EditText emailIn = findViewById(R.id.activity_signup_email);
         EditText usernameIn = findViewById(R.id.activity_signup_username);
         EditText passwordIn = findViewById(R.id.activity_signup_password);
+
         signupSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User user = new User();
-                user.setId(1);
-                user.setName(nameIn.getText().toString());
-                user.setEmail(emailIn.getText().toString());
-                user.setUsername(usernameIn.getText().toString());
-                user.setHashed_pass(passwordIn.getText().toString());
-                user.setBought_p(0);
-                user.setSold_p(0);
-                user.setBtc_balance(0);
-                GetUserApi().addNewUser(user.getName(), user.getEmail(), user.getUsername(), user.getHashed_pass()).enqueue(new SlimCallback<String>(string -> {
-                    if (string == "Saved\n") {
-                        setContentView(R.layout.activity_main);
-                    }
+                User newUser = new User();
+                newUser.setName(nameIn.getText().toString());
+                newUser.setEmail(emailIn.getText().toString());
+                newUser.setUsername(usernameIn.getText().toString());
+                newUser.setHashed_pass(passwordIn.getText().toString());
+                newUser.setBought_p(0);
+                newUser.setSold_p(0);
+                newUser.setBtc_balance(0);
+                GetUserApi().addNewUser(newUser).enqueue(new SlimCallback<User>(user -> {
+                    setContentView(R.layout.activity_main);
                 }));
             }
         });
