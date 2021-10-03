@@ -50,7 +50,7 @@ public class UserController {
         }
 
         @PostMapping(path="/login")
-        public ResponseEntity<String> userLogin(@RequestParam String emailOrUserName, @RequestParam String hashedPass)
+            public ResponseEntity<String> userLogin(@RequestParam String emailOrUserName, @RequestParam String hashedPass)
         {
             User user;
             if (isEmailValid(emailOrUserName))
@@ -61,7 +61,7 @@ public class UserController {
             if ( user == null || !hashedPass.equals(user.getHashed_pass()))
                 return ResponseEntity.badRequest().body("Incorrect password or user not found :(\n");
             else
-                return ResponseEntity.ok("Login succesfull");
+                return ResponseEntity.ok("Login succesfull\n");
         }
     }
 }
