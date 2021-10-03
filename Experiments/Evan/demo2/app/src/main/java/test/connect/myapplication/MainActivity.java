@@ -53,27 +53,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        postByBodyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Trivia newTrivia = new Trivia();
-                newTrivia.setQuestion(questionIn.getText().toString());
-                newTrivia.setAnswer(answerIn.getText().toString());
-                GetTriviaApi().PostTriviaByBody(newTrivia).enqueue(new SlimCallback<Trivia>(trivia->{
-                    RegenerateAllTriviasOnScreen(apiText1);
-                    questionIn.setText("");
-                    answerIn.setText("");
-                }));
-            }
+        postByBodyBtn.setOnClickListener(view -> {
+            Trivia newTrivia = new Trivia();
+            newTrivia.setQuestion(questionIn.getText().toString());
+            newTrivia.setAnswer(answerIn.getText().toString());
+            GetTriviaApi().PostTriviaByBody(newTrivia).enqueue(new SlimCallback<Trivia>(trivia->{
+                RegenerateAllTriviasOnScreen(apiText1);
+                questionIn.setText("");
+                answerIn.setText("");
+            }));
         });
 
     }
 
     void RegenerateAllTriviasOnScreen(TextView apiText1){
-        GetTriviaApi().GetAllTrivia().enqueue(new SlimCallback<List<Trivia>>(trivias -> {
+        GetTriviaApi().GetAllTrivia().enqueue(new SlimCallback<>(trivias -> {
             apiText1.setText("");
 
-            for(int i = trivias.size()-1; i >= 0; i--){
+            for (int i = trivias.size() - 1; i >= 0; i--) {
                 apiText1.append(trivias.get(i).printable());
             }
 
