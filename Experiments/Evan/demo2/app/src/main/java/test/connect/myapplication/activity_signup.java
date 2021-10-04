@@ -37,8 +37,9 @@ public class activity_signup extends AppCompatActivity {
                 newUser.setSold_p(0);
                 newUser.setBtc_balance(0);
                 GetUserApi().addNewUser(newUser).enqueue(new SlimCallback<User>(user -> {
-                    setContentView(R.layout.activity_main);
+                    setContentView(R.layout.activity_demo2);
                 }));
+                setContentView(R.layout.activity_demo2);
             }
         });
     }

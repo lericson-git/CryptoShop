@@ -76,4 +76,11 @@ public class User {
     public void setBtc_balance(double btc_balance) {
         this.btc_balance = btc_balance;
     }
+
+    public String printable(){
+        return "HELLO";
+        /*return "\nID:  " + getId()
+                +"\nNAME:  "+ getName()
+                +"\nEMAIL:  "+getEmail()+"\n";*/
+    }
 }

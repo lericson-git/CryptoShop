@@ -1,5 +1,7 @@
 package test.connect.myapplication.api;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
@@ -13,7 +15,7 @@ public interface UserApi {
     Call<User> addNewUser(@Body User newUser);
 
     @GET("/allUsers")
-    Call<Iterable<User>> getAllUsers();
+    Call<List<User>> GetAllUser();
 
     @POST("/login")
     Call<String> userLogin(String emailOrUserName, String hashedPass);
