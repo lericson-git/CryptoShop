@@ -26,23 +26,18 @@ public class demo2 extends AppCompatActivity {
         TextView apiText1 = findViewById(R.id.activity_demo2_textView1);
         apiText1.setMovementMethod(new ScrollingMovementMethod());
         apiText1.setHeight(350);
+        apiText1.setText("WOrking");
         Button loadUsers = findViewById(R.id.activity_demo2_loadUsersBtn);
 
         GetUserApi().GetAllUser().enqueue(new SlimCallback<List<User>>(users -> {
             apiText1.setText("");
 
             for (int i = users.size() - 1; i >= 0; i--) {
-                apiText1.append(users.get(i).printable());
+                //apiText1.append("test");
+               apiText1.append(users.get(i).printable());
             }
         }, "GetAllUser"));
 
-        loadUsers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                apiText1.setText("WOIRKR");
-                //RegenerateAllUsersOnScreen(apiText1);
-            }
-        });
 
     }
 }

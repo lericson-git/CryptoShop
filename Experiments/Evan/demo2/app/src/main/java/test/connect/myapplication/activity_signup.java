@@ -4,6 +4,7 @@ import static test.connect.myapplication.api.ApiClientFactory.GetUserApi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class activity_signup extends AppCompatActivity {
 
         signupSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 User newUser = new User();
                 newUser.setName(nameIn.getText().toString());
                 newUser.setEmail(emailIn.getText().toString());
@@ -37,9 +38,9 @@ public class activity_signup extends AppCompatActivity {
                 newUser.setSold_p(0);
                 newUser.setBtc_balance(0);
                 GetUserApi().addNewUser(newUser).enqueue(new SlimCallback<User>(user -> {
-                    setContentView(R.layout.activity_demo2);
+
                 }));
-                setContentView(R.layout.activity_demo2);
+                startActivity(new Intent(v.getContext(), demo2.class));
             }
         });
     }

@@ -78,9 +78,8 @@ public class User {
     }
 
     public String printable(){
-        return "HELLO";
-        /*return "\nID:  " + getId()
+        return "\nID:  " + getId()
                 +"\nNAME:  "+ getName()
-                +"\nEMAIL:  "+getEmail()+"\n";*/
+                +"\nEMAIL:  "+getEmail()+"\n";
     }
 }
