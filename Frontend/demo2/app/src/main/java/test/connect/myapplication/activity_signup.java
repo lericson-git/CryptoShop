@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.User;
@@ -20,24 +22,10 @@ import test.connect.myapplication.model.User;
 public class activity_signup extends AppCompatActivity {
 
     //Encrypts string base into sha256 format
-    public String sha256(String base) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(base.getBytes("UTF-8"));
-            StringBuilder hexString = new StringBuilder();
-
-            for (int i = 0; i < hash.length; i++) {
-                String hex = Integer.toHexString(0xff & hash[i]);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-
-            return hexString.toString();
-        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
-            throw new RuntimeException(ex);
-        }
+    public String sha256(String password) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+        return Arrays.toString(encodedhash);
     }
 
     @Override
@@ -58,7 +46,11 @@ public class activity_signup extends AppCompatActivity {
                 newUser.setName(nameIn.getText().toString());
                 newUser.setEmail(emailIn.getText().toString());
                 newUser.setUsername(usernameIn.getText().toString());
-                newUser.setHashed_pass(sha256(passwordIn.getText().toString()));
+                try {
+                    newUser.setHashed_pass(sha256(passwordIn.getText().toString()));
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
                 newUser.setBought_p(0);
                 newUser.setSold_p(0);
                 newUser.setBtc_balance(0);
