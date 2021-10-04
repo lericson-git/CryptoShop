@@ -11,7 +11,7 @@ public class ApiClientFactory {
 
         if (apiClientSeed == null) {
             apiClientSeed = new Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:8080/")
+                    .baseUrl("http://10.24.227.81:8080/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
