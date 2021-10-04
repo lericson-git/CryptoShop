@@ -19,7 +19,8 @@ public class User {
     private String btcAddress;
     private String btcXpub;
 
-
+    public User() {
+    }
     public String getBtcAddress() {
         return btcAddress;
     }
