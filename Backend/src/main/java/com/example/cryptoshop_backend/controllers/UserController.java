@@ -21,6 +21,11 @@ public class UserController {
 
     @PostMapping(path = "/signUp")
     User addNewUser(@RequestBody User newUser) {
+        if (!isEmailValid(newUser.getEmail()))
+            return null;
+        if (userRepository.findByEmail(newUser.getEmail()) != null || userRepository.findByUsername(newUser.getEmail()) != null)
+            return null;
+
         userRepository.save(newUser);
         return newUser;
     }
