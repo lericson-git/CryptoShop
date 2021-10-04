@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
@@ -70,7 +71,8 @@ public class activity_signup extends AppCompatActivity {
                 newUser.setSold_p(0);
                 newUser.setBtc_balance(0);
                 GetUserApi().addNewUser(newUser).enqueue(new SlimCallback<User>(user -> {
-
+                    if (user == null)
+                        Toast.makeText(getApplicationContext(),"Email or username taken",Toast.LENGTH_SHORT).show();
                 }));
                 startActivity(new Intent(v.getContext(), demo2.class));
             }
