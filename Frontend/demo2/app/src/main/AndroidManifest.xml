@@ -13,10 +13,10 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".model.Profileactivity"
+            android:name=".Profileactivity"
             android:exported="true" />
         <activity
-            android:name=".model.Profile"
+            android:name=".Profile"
             android:exported="true" />
         <activity
             android:name=".demo2"
