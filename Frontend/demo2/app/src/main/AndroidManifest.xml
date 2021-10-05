@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".model.Profileactivity"
+            android:exported="true" />
+        <activity
+            android:name=".model.Profile"
+            android:exported="true" />
+        <activity
             android:name=".demo2"
             android:exported="true" />
         <activity
@@ -26,7 +32,7 @@
         </activity>
         <activity
             android:name=".activity_login"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
