@@ -78,7 +78,7 @@ public class User {
     }
 
     public String printable(){
-        return "\nID:  " + getId()
+        return "\nID: " + getId()
                 +"\nNAME:  "+ getName()
                 +"\nEMAIL:  "+getEmail()+"\n";
     }
