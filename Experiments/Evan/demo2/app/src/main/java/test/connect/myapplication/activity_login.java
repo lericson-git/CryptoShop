@@ -4,6 +4,7 @@ import static test.connect.myapplication.api.ApiClientFactory.GetUserApi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,13 +26,13 @@ public class activity_login extends AppCompatActivity {
         EditText passwordIn = findViewById(R.id.activity_login_password);
         loginSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 User loginUser = new User();
                 loginUser.setEmail(emailIn.getText().toString());
                 loginUser.setHashed_pass(passwordIn.getText().toString());
                 GetUserApi().userLogin(emailIn.getText().toString(), passwordIn.getText().toString()).enqueue(new SlimCallback<String>(string -> {
                     if (string == "Login succesfull") {
-                        setContentView(R.layout.activity_main);
+                        startActivity(new Intent(v.getContext(), demo2.class));
                     }
                 }));
             }
