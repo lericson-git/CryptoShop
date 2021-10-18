@@ -74,7 +74,7 @@ public class activity_signup extends AppCompatActivity {
                     if (user == null)
                         Toast.makeText(getApplicationContext(),"Email or username taken",Toast.LENGTH_SHORT).show();
                 }));
-                startActivity(new Intent(v.getContext(), demo2.class));
+                startActivity(new Intent(v.getContext(), MainActivity.class));
             }
         });
     }
