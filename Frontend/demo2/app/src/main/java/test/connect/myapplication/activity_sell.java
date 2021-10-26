@@ -2,8 +2,12 @@ package test.connect.myapplication;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.fragment.app.Fragment;
 
@@ -13,6 +17,11 @@ import androidx.fragment.app.Fragment;
  * create an instance of this fragment.
  */
 public class activity_sell extends Fragment {
+    //Activity frontend elements
+    Button btn;
+    EditText prodName;
+    EditText price;
+    EditText descripton;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +33,7 @@ public class activity_sell extends Fragment {
     private String mParam2;
 
     public activity_sell() {
-        // Required empty public constructor
+
     }
 
     /**
@@ -41,6 +50,7 @@ public class activity_sell extends Fragment {
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,6 +62,7 @@ public class activity_sell extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        btn = findViewByID
     }
 
     @Override
