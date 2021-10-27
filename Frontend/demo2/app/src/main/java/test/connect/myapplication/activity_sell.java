@@ -1,5 +1,6 @@
 package test.connect.myapplication;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -7,9 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.fragment.app.Fragment;
+
+import test.connect.myapplication.model.Post;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,9 +24,10 @@ import androidx.fragment.app.Fragment;
 public class activity_sell extends Fragment {
     //Activity frontend elements
     Button btn;
-    EditText prodName;
-    EditText price;
-    EditText descripton;
+    EditText prodNameText, priceText, descriptonText;
+    String prodName, descripton;
+    int price;
+    View view;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,6 +41,7 @@ public class activity_sell extends Fragment {
     public activity_sell() {
 
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -62,13 +69,36 @@ public class activity_sell extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        btn = findViewByID
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sell, container, false);
+        view = inflater.inflate(R.layout.fragment_sell, container, false);
+        btn = view.findViewById(R.id.submitBtn);
+        prodNameText = view.findViewById(R.id.inputProductName);
+        priceText = view.findViewById(R.id.inputPrice);
+        descriptonText = view.findViewById(R.id.inputDescription);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                prodName = prodNameText.getText().toString();
+                price = Integer.parseInt(priceText.getText().toString());
+                descripton = descriptonText.getText().toString();
+                Post post = new Post();
+                post.setTitle(prodName);
+                post.setPrice(price);
+                post.setBigText(descripton);
+                
+                Context context = getContext();
+                Toast toast = Toast.makeText(context, "Product Listed", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+
+        return view;
     }
 }
