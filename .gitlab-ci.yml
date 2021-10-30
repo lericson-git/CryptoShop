@@ -7,4 +7,4 @@ maven-build: #this is a job
     - springboot_tag #this is the link to the shell runner on the server
   script:
     - cd Backend/
-    - echo "hello world!" >> delete.txt
+    - mvn package -B
