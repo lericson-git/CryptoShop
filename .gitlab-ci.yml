@@ -6,5 +6,5 @@ maven-build: #this is a job
   tags:
     - springboot_tag #this is the link to the shell runner on the server
   script:
-    - pwd
-    - echo "This commands executes properly" >> /home/miguelm1/delete.txt
+    - cd Backend/
+    - mvn package
