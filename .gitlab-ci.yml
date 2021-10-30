@@ -7,4 +7,4 @@ maven-build: #this is a job
     - spring_boot #this is the link to the shell runner on the server
   script:
     - cd Backend/
-    - mvn package
+    - mvn package -B
