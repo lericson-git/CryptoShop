@@ -1,7 +1,6 @@
 example
 stages:
   - maventry
-  - androidtry
 
 maven-build: #this is a job
   stage: maventry
