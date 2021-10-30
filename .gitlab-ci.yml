@@ -1,11 +1,10 @@
-example
 stages:
   - maventry
 
 maven-build: #this is a job
   stage: maventry
   tags:
-    -spring_boot #this is the link to the shell runner on the server
+    - spring_boot #this is the link to the shell runner on the server
   script:
     - cd Backend/
     - mvn package
