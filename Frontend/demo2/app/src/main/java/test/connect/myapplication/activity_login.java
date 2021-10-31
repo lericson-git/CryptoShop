@@ -34,6 +34,8 @@ public class activity_login extends AppCompatActivity {
                         setContentView(R.layout.activity_main);
                     }
                 }));
+
+                dfnffuru
             }
         });
     }
