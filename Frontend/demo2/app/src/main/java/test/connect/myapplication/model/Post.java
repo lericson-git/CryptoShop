@@ -2,10 +2,11 @@ package test.connect.myapplication.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Post{
+public class Post {
     private int userId;
     private int id;
     private String title;
+    private int price;
     @SerializedName("body")
     private String bigText;
 
@@ -39,6 +40,10 @@ public class Post{
 
     public void setBigText(String bigText) {
         this.bigText = bigText;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
 
