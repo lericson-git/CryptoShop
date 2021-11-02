@@ -38,10 +38,7 @@ public class activity_sell extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public activity_sell() {
-
-    }
-
+    public activity_sell() { }
 
     /**
      * Use this factory method to create a new instance of
@@ -98,7 +95,6 @@ public class activity_sell extends Fragment {
                 toast.show();
             }
         });
-
         return view;
     }
 }
