@@ -80,22 +80,16 @@ public class activity_search extends Fragment implements SearchView.OnQueryTextL
                 "Cat", "Bike", "Plates", "Wine Bottle", "Headphones",
                 "Media NFT","Harry Potter Books","Movie Collection"};
 
-        // Locate the ListView in listview_main.xml
         list = (ListView) view.findViewById(R.id.listView);
 
         for (int i = 0; i < productList.length; i++) {
             Post product = new Post(productList[i]);
-            // Binds all strings into an array
             arraylist.add(product);
         }
 
         // Pass results to test.connect.myapplication.ListViewAdapter Class
         adapter = new ListViewAdapter(this.getContext(), arraylist);
-
-        // Binds the Adapter to the ListView
         list.setAdapter(adapter);
-
-        // Locate the EditText in listview_main.xml
         search = (SearchView) view.findViewById(R.id.searchView);
         search.setOnQueryTextListener(this);
 
