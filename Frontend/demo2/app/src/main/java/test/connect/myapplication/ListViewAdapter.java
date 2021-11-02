@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Locale;
 
 import test.connect.myapplication.model.Post;
-
+// Everything looks perfect could have provided comments to explain the code
 public class ListViewAdapter extends BaseAdapter {
     // Declare Variables
     Context mContext;

@@ -17,6 +17,8 @@ import java.security.NoSuchAlgorithmException;
 import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.User;
 
+// Login activity does good job
+
 public class activity_login extends AppCompatActivity {
 
     public String sha256(String base) throws NoSuchAlgorithmException {
@@ -40,7 +42,7 @@ public class activity_login extends AppCompatActivity {
 
     }
 
-
+    // Done a nice job in implementing the stuff
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +74,9 @@ public class activity_login extends AppCompatActivity {
                 }));
 
             }
-        });
+        // could have done better maybe to remove the code in order to make it look nicer
+
+        // f
 /*        btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

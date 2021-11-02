@@ -18,6 +18,8 @@ import test.connect.myapplication.model.Post;
  * Use the {@link activity_search#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+//Code review:- activity search does
 public class activity_search extends Fragment implements SearchView.OnQueryTextListener{
     View view;
     ListView list;
@@ -39,6 +41,7 @@ public class activity_search extends Fragment implements SearchView.OnQueryTextL
         // Required empty public constructor
     }
 
+    // great job in providing comments again
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -57,6 +60,7 @@ public class activity_search extends Fragment implements SearchView.OnQueryTextL
         return fragment;
     }
 
+    // done a great job in here too
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
