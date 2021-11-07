@@ -20,9 +20,19 @@ import java.util.Arrays;
 import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.User;
 
+/**
+ * @author Lucas Ericson
+ * Signup activity that creates new user with given data.
+ * Interacts with backend for input validation.
+ */
 public class activity_signup extends AppCompatActivity {
 
-    //Encrypts string base into sha256 format
+    /**
+     * Converts given string password into a SHA-256 encrypted password and returns it.
+     * @param base the base string we are encrypting.
+     * @return encrypted string.
+     * @throws NoSuchAlgorithmException when string does not properly encrypt.
+     */
     public String sha256(String base) throws NoSuchAlgorithmException {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -44,6 +54,11 @@ public class activity_signup extends AppCompatActivity {
 
     }
 
+    /**
+     * onCreate for the signup activity.
+     * Sets up UI elements and button listener.
+     * @param savedInstanceState is a {@link Bundle} that stores saved instances.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +71,10 @@ public class activity_signup extends AppCompatActivity {
         EditText passwordIn = findViewById(R.id.activity_signup_password);
 
         signupSubmit.setOnClickListener(new View.OnClickListener() {
+            /**
+             * onClick method runs when button is clicked and submits data fields to backend.
+             * @param v is the {@link View} the activity is running in.
+             */
             @Override
             public void onClick(View v) {
                 User newUser = new User();

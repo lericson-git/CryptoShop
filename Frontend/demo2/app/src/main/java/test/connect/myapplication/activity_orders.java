@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 /**
+ * NOT YET IMPLEMENTED
  * A simple {@link Fragment} subclass.
  * Use the {@link activity_orders#newInstance} factory method to
  * create an instance of this fragment.

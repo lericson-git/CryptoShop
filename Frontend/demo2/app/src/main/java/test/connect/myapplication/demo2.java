@@ -16,6 +16,7 @@ import test.connect.myapplication.model.User;
 
 public class demo2 extends AppCompatActivity {
 
+    //DO NOT INCLUDE IN API
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
