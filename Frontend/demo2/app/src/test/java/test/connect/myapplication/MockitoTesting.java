@@ -53,6 +53,13 @@ public class MockitoTesting {
         verify(spySell).setPost(ex);
         assertEquals(spySell.getPost(), ex);
     }
+    @Test
+    // Shouldn't be listed before post is created
+    public void test_bothListedBeforetheClass() {
+        activity_sell spySell = spy(activity_sell.class);
+        assertEquals(spySell.getListed(), Boolean.FALSE);
+    }
+
 
 
 
