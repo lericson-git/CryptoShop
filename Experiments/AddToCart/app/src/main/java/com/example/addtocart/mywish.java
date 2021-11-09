@@ -64,6 +64,11 @@ public class mywish {
         return ipad_price;
     }
 
+    /**
+     * Set the ipad price
+     * @param smartWatch_price
+     */
+
     public void setIpad_price(double smartWatch_price) {
         this.ipad_price = ipad_price;
     }

@@ -14,6 +14,10 @@ public class MainActivity extends AppCompatActivity {
     TextView total;
     double total_price;
 
+    /**
+     * Creates the object mywish and finds the id
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         total = findViewById(R.id.total);
 
     }
+
+    /**
+     * Function to implement buttons
+     * @param view
+     */
 
     public void radioClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
@@ -50,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     *
+     * Functions to implement check box
+     * @param view
+     */
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
         switch(view.getId()) {
@@ -70,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
         }
             total.setText("Total Price: " + calculate_total());
     }
+
+    /**
+     * It calculates the total price
+     * @return total_price
+     */
     private double calculate_total() {
         total_price = MyWish.getMywish_size_price() + MyWish.getSmartWatch_price() + MyWish.getArmchair_price();
         return total_price;
