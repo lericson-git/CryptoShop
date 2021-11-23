@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
  * Can use the {@link activity_search#newInstance} factory method to
  * create an instance of this fragment.
  * Page is meant to be reached from {@link MainActivity}'s NavBar.
+ * User will write names of the data in their inputs and will get
+ * the correct list of array as their output
  */
 public class activity_search extends Fragment {
 

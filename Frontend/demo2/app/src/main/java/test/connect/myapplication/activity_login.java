@@ -25,8 +25,11 @@ import test.connect.myapplication.model.User;
 public class activity_login extends AppCompatActivity {
 
     /**
+     *
      * Converts given string password into a SHA-256 encrypted password and returns it.
-     * @param base the base string we are encrypting.
+     * @param base the base string we are encrypting. It will give
+     *  login page as output and users are expected to enter their
+     *  credentials as their input
      * @return encrypted string.
      * @throws NoSuchAlgorithmException when string does not properly encrypt.
      */
