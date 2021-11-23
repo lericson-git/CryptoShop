@@ -19,7 +19,8 @@ import test.connect.myapplication.model.User;
 
 /**
  * @author Lucas Ericson
- * Login Activity for users.
+ * Login Activity for users. It provides the login page of the user
+ * as the output
  */
 public class activity_login extends AppCompatActivity {
 
