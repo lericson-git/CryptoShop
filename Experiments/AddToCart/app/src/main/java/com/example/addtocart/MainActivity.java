@@ -8,6 +8,12 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+/**
+ * @author Meet patel
+ *
+ * Input in the carts all the items and output the products
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     mywish MyWish;

@@ -1,5 +1,10 @@
 package com.example.addtocart;
 
+
+/**
+ * Input the total price and gets the outputs for various products
+ */
+
 public class mywish {
     double mywish_size_price;
     double armchair_price = 0;
