@@ -46,5 +46,13 @@ public class ProductController {
             return productRepository.findAll();
         }
 
+        @GetMapping(path="product/{id}")
+        public @ResponseBody Product getProductById(@PathVariable int id) {
+            if (productRepository.findById(id) != null)
+                return productRepository.findById(id);
+            else
+                return null;
+        }
+
     }
 }
