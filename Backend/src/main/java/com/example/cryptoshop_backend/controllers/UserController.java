@@ -20,14 +20,14 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping(path = "/signUp")
-    User addNewUser(@RequestBody User newUser) {
-        if (!isEmailValid(newUser.getEmail()))
-            return null;
+    ResponseEntity<?> addNewUser(@RequestBody User newUser) {
+        if (newUser.getEmail() == null || !isEmailValid(newUser.getEmail()))
+            return ResponseEntity.status(400).build();
         if (userRepository.findByEmail(newUser.getEmail()) != null || userRepository.findByUsername(newUser.getEmail()) != null)
-            return null;
+            return ResponseEntity.status(400).build();
 
         userRepository.save(newUser);
-        return newUser;
+        return ResponseEntity.status(200).build();
     }
 
     @GetMapping(path = "/allUsers")
