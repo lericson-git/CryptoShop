@@ -14,11 +14,10 @@ public class ProductController {
         private ProductRepository productRepository;
 
         @PostMapping(path="/addProduct")
-        public @ResponseBody
-        ResponseEntity<?> addNewProduct(Product product)
+        public @ResponseBody ResponseEntity<?> addNewProduct(@RequestBody Product product)
         {
-            if (product.getName()==null ||product.getSellerId() == null || product.getPrice() == null
-                || product.getCondition() == null)
+            if (product.getName()==null ||product.getSeller_id() == null || product.getPrice() == null
+                || product.getP_condition() == null)
                 return ResponseEntity.status(400).build();
             productRepository.save(product);
             return ResponseEntity.status(200).build();

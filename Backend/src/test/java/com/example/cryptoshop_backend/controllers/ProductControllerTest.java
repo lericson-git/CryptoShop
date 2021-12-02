@@ -25,10 +25,19 @@ public class ProductControllerTest {
     void givenValidProduct_Return200ok() throws Exception {
         //GIVEN
         Product validProduct = new Product();
-        validProduct.setSellerId(1);
-        validProduct.setName("Boook");
-        validProduct.setCondition("Used");
-        validProduct.setPrice(9.99);
+        validProduct.setName("Mockito Test 3");
+        validProduct.setDescription("Description");
+        validProduct.setPrice(99.99);
+        validProduct.setP_condition("Condition!");
+        validProduct.setMain_tag("main tag");
+        validProduct.setSub_tag("sub tag");
+        validProduct.setWeight((double) 123);
+        validProduct.setHeight((double)123);
+        validProduct.setWidth((double) 123);
+        validProduct.setLength((double) 123);
+        validProduct.setSeller_id(123);
+        validProduct.setBuyer_id(321);
+        validProduct.setHas_been_bought(false);
         //WHEN
         mvc.perform(post("/addProduct")
                 .contentType(APPLICATION_JSON)

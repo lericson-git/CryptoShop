@@ -25,7 +25,7 @@ public class UserControllerTest {
         //GIVEN
         User validUser = new User();
         validUser.setName("ValidName");
-        validUser.setEmail("Valid_email4@gmail.com");
+        validUser.setEmail("Valid_email1@gmail.com");
         validUser.setHashed_pass("hashedpassword");
 
         //WHEN
