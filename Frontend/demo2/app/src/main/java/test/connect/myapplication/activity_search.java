@@ -4,8 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
+
+import java.util.ArrayList;
+
+import test.connect.myapplication.model.Post;
 
 /**
  * @author Lucas Ericson
@@ -13,8 +19,18 @@ import androidx.fragment.app.Fragment;
  * Can use the {@link activity_search#newInstance} factory method to
  * create an instance of this fragment.
  * Page is meant to be reached from {@link MainActivity}'s NavBar.
+ * User will write names of the data in their inputs and will get
+ * the correct list of array as their output
  */
-public class activity_search extends Fragment {
+
+//Code review:- activity search does
+public class activity_search extends Fragment implements SearchView.OnQueryTextListener{
+    View view;
+    ListView list;
+    ListViewAdapter adapter;
+    SearchView search;
+    String[] productList;
+    ArrayList<Post> arraylist = new ArrayList<Post>();
 
     /**
      * Empty constructor for activity
@@ -23,6 +39,7 @@ public class activity_search extends Fragment {
         // Required empty public constructor
     }
 
+    // great job in providing comments again
     /**
      * Use this factory method to create a new instance of
      * this fragment.
@@ -59,6 +76,41 @@ public class activity_search extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        view = inflater.inflate(R.layout.fragment_search, container, false);
+
+        SearchView searchView = (SearchView) view.findViewById(R.id.searchView); // inititate a search view
+        CharSequence query = searchView.getQuery(); // get the query string currently in the text field
+
+        // Sample data
+        productList = new String[]{"Lawn Chair", "Alarm Clock", "Dog",
+                "Cat", "Bike", "Plates", "Wine Bottle", "Headphones",
+                "Media NFT","Harry Potter Books","Movie Collection"};
+
+        list = (ListView) view.findViewById(R.id.listView);
+
+        for (int i = 0; i < productList.length; i++) {
+            Post product = new Post(productList[i]);
+            arraylist.add(product);
+        }
+
+        // Pass results to test.connect.myapplication.ListViewAdapter Class
+        adapter = new ListViewAdapter(this.getContext(), arraylist);
+        list.setAdapter(adapter);
+        search = (SearchView) view.findViewById(R.id.searchView);
+        search.setOnQueryTextListener(this);
+
+        return view;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        String text = newText;
+        adapter.filter(text);
+        return false;
     }
 }

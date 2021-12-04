@@ -8,11 +8,17 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 /**
- * NOT YET IMPLEMENTED
+ * @author Meet Patel
+ *
+ * Gives the output of the orders that the customers placed.
+ * Customer has to provide the input of the orders
  * A simple {@link Fragment} subclass.
  * Use the {@link activity_orders#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+//nice job in creating activity orders page
+    
 public class activity_orders extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match

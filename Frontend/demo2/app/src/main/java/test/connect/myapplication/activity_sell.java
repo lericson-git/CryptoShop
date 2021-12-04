@@ -30,6 +30,8 @@ public class activity_sell extends Fragment {
     String prodName, descripton;
     int price;
     View view;
+    Post post;
+    Boolean listed = false;
 
     /**
      * Empty constructor for activity
@@ -81,10 +83,7 @@ public class activity_sell extends Fragment {
                 prodName = prodNameText.getText().toString();
                 price = Integer.parseInt(priceText.getText().toString());
                 descripton = descriptonText.getText().toString();
-                Post post = new Post();
-                post.setTitle(prodName);
-                post.setPrice(price);
-                post.setBigText(descripton);
+                setPost(new Post(prodName, price, descripton));
                 
                 Context context = getContext();
                 Toast toast = Toast.makeText(context, "Product Listed", Toast.LENGTH_SHORT);
@@ -92,5 +91,19 @@ public class activity_sell extends Fragment {
             }
         });
         return view;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    //Testing method
+    protected void setPost(Post post) {
+        this.post = post;
+        listed = true;
+    }
+
+    public Boolean getListed() {
+        return listed;
     }
 }

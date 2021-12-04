@@ -23,7 +23,9 @@ import test.connect.myapplication.model.User;
 /**
  * @author Lucas Ericson
  * Signup activity that creates new user with given data.
- * Interacts with backend for input validation.
+ * Interacts with backend for input validation. It expects the user
+ * to provide credentals as input and user will get success login
+ * for the output
  */
 public class activity_signup extends AppCompatActivity {
 

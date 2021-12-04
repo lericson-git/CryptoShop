@@ -10,7 +10,8 @@ import android.widget.Button;
 /**
  * @author Lucas Ericson
  * activity_landing is a implemented {@link AppCompatActivity} that pulls up when the app is opened.
- * It allows users to sign up, login, or skip to testing the app.
+ * It allows users to sign up, login, or skip to testing the app. It provieds
+ * the output of login page.
  */
 public class activity_landing extends AppCompatActivity {
 

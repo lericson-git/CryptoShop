@@ -19,13 +19,17 @@ import test.connect.myapplication.model.User;
 
 /**
  * @author Lucas Ericson
- * Login Activity for users.
+ * Login Activity for users. It provides the login page of the user
+ * as the output
  */
 public class activity_login extends AppCompatActivity {
 
     /**
+     *
      * Converts given string password into a SHA-256 encrypted password and returns it.
-     * @param base the base string we are encrypting.
+     * @param base the base string we are encrypting. It will give
+     *  login page as output and users are expected to enter their
+     *  credentials as their input
      * @return encrypted string.
      * @throws NoSuchAlgorithmException when string does not properly encrypt.
      */
@@ -89,7 +93,9 @@ public class activity_login extends AppCompatActivity {
                 }));
 
             }
-        });
+        // could have done better maybe to remove the code in order to make it look nicer
+
+        // f
 /*        btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
