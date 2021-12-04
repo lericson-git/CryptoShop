@@ -8,9 +8,13 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 /**
+ * @author Meet Patel
+ * NOT YET IMPLEMENTED.
  * A simple {@link Fragment} subclass.
  * Use the {@link activity_account#newInstance} factory method to
- * create an instance of this fragment.
+ * create an instance of this fragment. It provides the output of
+ * the account information page. It provides the details of the
+ * accounts. It provies the output of the accounts.
  */
 public class activity_account extends Fragment {
 

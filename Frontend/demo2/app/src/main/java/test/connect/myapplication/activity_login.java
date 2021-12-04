@@ -17,10 +17,22 @@ import java.security.NoSuchAlgorithmException;
 import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.User;
 
-// Login activity does good job
-
+/**
+ * @author Lucas Ericson
+ * Login Activity for users. It provides the login page of the user
+ * as the output
+ */
 public class activity_login extends AppCompatActivity {
 
+    /**
+     *
+     * Converts given string password into a SHA-256 encrypted password and returns it.
+     * @param base the base string we are encrypting. It will give
+     *  login page as output and users are expected to enter their
+     *  credentials as their input
+     * @return encrypted string.
+     * @throws NoSuchAlgorithmException when string does not properly encrypt.
+     */
     public String sha256(String base) throws NoSuchAlgorithmException {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -42,7 +54,10 @@ public class activity_login extends AppCompatActivity {
 
     }
 
-    // Done a nice job in implementing the stuff
+    /**
+     * Sets activity UI elements and creates a button listener for submission.
+     * @param savedInstanceState is a {@link Bundle} that stores the instance state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +71,10 @@ public class activity_login extends AppCompatActivity {
         btSubmit = findViewById(R.id.bt_submit);
 
         btSubmit.setOnClickListener(new View.OnClickListener() {
+            /**
+             * onClick runs when submission button is pressed and submits user login data.
+             * @param v is the {@link View} that the activity is running in.
+             */
             @Override
             public void onClick(View v) {
                 User newUser = new User();
