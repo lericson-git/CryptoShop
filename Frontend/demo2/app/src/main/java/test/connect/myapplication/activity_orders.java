@@ -1,9 +1,11 @@
 package test.connect.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.Fragment;
 
@@ -16,6 +18,8 @@ import androidx.fragment.app.Fragment;
 //nice job in creating activity orders page
     
 public class activity_orders extends Fragment {
+    ImageButton myImageButton;
+    private ImageButton btntableclock;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,12 +59,27 @@ public class activity_orders extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_orders, container, false);
+        View v = inflater.inflate(R.layout.fragment_orders, container, false);
+        btntableclock = v.findViewById(R.id.btntableclock);
+        btntableclock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentloadnewactivity = new Intent(getActivity(), activity_tableclock.class);
+                startActivity(intentloadnewactivity);
+
+            }
+        });
+
+        return v;
+
+
     }
 }
