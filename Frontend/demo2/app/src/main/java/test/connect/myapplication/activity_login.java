@@ -73,6 +73,7 @@ public class activity_login extends AppCompatActivity {
         btSubmit.setOnClickListener(new View.OnClickListener() {
             /**
              * onClick runs when submission button is pressed and submits user login data.
+             *
              * @param v is the {@link View} that the activity is running in.
              */
             @Override
@@ -89,10 +90,13 @@ public class activity_login extends AppCompatActivity {
                     if (string == "Login succesfull")
                         startActivity(new Intent(v.getContext(), activity_landing.class));
                     else
-                        Toast.makeText(getApplicationContext(),"Invalid Username or Password",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_SHORT).show();
                 }));
-
             }
+        });
+    }
+}
+
         // could have done better maybe to remove the code in order to make it look nicer
 
         // f
@@ -128,5 +132,3 @@ public class activity_login extends AppCompatActivity {
                 }
             }
         }); */
-    }
-}
