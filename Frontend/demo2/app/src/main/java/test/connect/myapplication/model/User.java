@@ -1,6 +1,9 @@
 package test.connect.myapplication.model;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable {
     private Integer id;
     private String name;
     private String email;
@@ -81,5 +84,16 @@ public class User {
         return "\nID: " + getId()
                 +"\nNAME:  "+ getName()
                 +"\nEMAIL:  "+getEmail()+"\n";
+    }
+
+    //Implement parcelable to pass between fragments
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
     }
 }

@@ -48,6 +48,7 @@ public class activity_login extends AppCompatActivity {
 
         EditText etUsername, etPassword;
         Button btSubmit;
+        Bundle bundle = new Bundle();
 
         etUsername = findViewById(R.id.et_username);
         etPassword = findViewById(R.id.et_password);
@@ -66,6 +67,7 @@ public class activity_login extends AppCompatActivity {
 
                 GetUserApi().userLogin(newUser.getUsername(), newUser.getHashed_pass()).enqueue(new SlimCallback<String>(string -> {
                     if (string == "Login succesfull")
+                        //bundle.putParcelable("userInfo", newUser);
                         startActivity(new Intent(v.getContext(), activity_landing.class));
                     else
                         Toast.makeText(getApplicationContext(),"Invalid Username or Password",Toast.LENGTH_SHORT).show();
