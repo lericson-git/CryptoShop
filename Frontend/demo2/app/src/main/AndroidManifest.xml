@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity_lipstick"
+            android:exported="true" />
+        <activity
+            android:name=".activity_plant"
+            android:exported="true" />
+        <activity
             android:name=".activity_tableclock"
             android:exported="true" />
         <activity
@@ -38,7 +44,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

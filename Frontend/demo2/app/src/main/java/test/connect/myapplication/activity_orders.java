@@ -20,6 +20,8 @@ import androidx.fragment.app.Fragment;
 public class activity_orders extends Fragment {
     ImageButton myImageButton;
     private ImageButton btntableclock;
+    private ImageButton btnplant;
+    private ImageButton btnlipstick;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,6 +79,23 @@ public class activity_orders extends Fragment {
 
             }
         });
+        btnplant = v.findViewById(R.id.btnplant);
+        btnplant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), activity_plant.class);
+                startActivity(intent);
+            }
+        });
+        btnlipstick = v.findViewById(R.id.btnlipstick);
+        btnlipstick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentsecond = new Intent(getActivity(), activity_lipstick.class);
+                startActivity(intentsecond);
+            }
+        });
+
 
         return v;
 
