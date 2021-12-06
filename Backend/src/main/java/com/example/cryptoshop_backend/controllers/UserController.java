@@ -1,6 +1,7 @@
 package com.example.cryptoshop_backend.controllers;
 
 import com.example.cryptoshop_backend.models.LoginDTO;
+import com.example.cryptoshop_backend.models.Product;
 import com.example.cryptoshop_backend.models.User;
 import com.example.cryptoshop_backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,14 @@ public class UserController {
             return ResponseEntity.badRequest().body("Incorrect password or user not found :(");
         else
             return ResponseEntity.ok("Login succesfull");
+    }
+
+    @GetMapping(path="user/{id}")
+    public @ResponseBody User getUserById(@PathVariable int id) {
+        if (userRepository.findById(id) != null)
+            return userRepository.findById(id);
+        else
+            return new User();
     }
 }
 
