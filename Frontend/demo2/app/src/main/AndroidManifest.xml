@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity_handclock"
+            android:exported="true" />
+        <activity
+            android:name=".activity_hometest"
+            android:exported="true" />
+        <activity
             android:name=".activity_lipstick"
             android:exported="true" />
         <activity

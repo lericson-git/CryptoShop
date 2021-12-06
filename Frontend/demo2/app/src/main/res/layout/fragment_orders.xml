@@ -23,8 +23,8 @@
         android:layout_height="228dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="344dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="242dp"
         app:srcCompat="@drawable/plant" />
 
     <ImageButton
@@ -36,9 +36,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="283dp"
+        android:layout_marginTop="448dp"
         android:layout_marginEnd="141dp"
-        android:layout_marginBottom="126dp"
+        android:layout_marginBottom="-39dp"
         app:srcCompat="@drawable/lipstick" />
 
     <ImageView
@@ -50,9 +50,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="117dp"
         android:layout_marginEnd="49dp"
-        android:layout_marginBottom="566dp"
+        android:layout_marginBottom="465dp"
         app:srcCompat="@drawable/orders" />
 
 
