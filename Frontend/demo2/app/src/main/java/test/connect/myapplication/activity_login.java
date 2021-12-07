@@ -60,7 +60,7 @@ public class activity_login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 User newUser = new User();
-                newUser.setName(etUsername.getText().toString());
+                newUser.setUsername(etUsername.getText().toString());
                 try {
                     newUser.setHashed_pass(sha256(etPassword.getText().toString()));
                 } catch (NoSuchAlgorithmException e) {
@@ -73,7 +73,7 @@ public class activity_login extends AppCompatActivity {
                 startActivity(next);
 
                 GetUserApi().userLogin(newUser.getUsername(), newUser.getHashed_pass()).enqueue(new SlimCallback<String>(string -> {
-                    if (string == "Login succesfull") {
+                    if (string == "Login successful") {
                         /*Intent next = new Intent(activity_login.this, activity_landing.class);
                         next.putExtra("userInfo", newUser);
                         User test = next.getExtras().getParcelable("userInfo");
