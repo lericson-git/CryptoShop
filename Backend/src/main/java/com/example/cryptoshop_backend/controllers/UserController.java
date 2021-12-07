@@ -1,7 +1,6 @@
 package com.example.cryptoshop_backend.controllers;
 
 import com.example.cryptoshop_backend.models.LoginDTO;
-import com.example.cryptoshop_backend.models.Product;
 import com.example.cryptoshop_backend.models.User;
 import com.example.cryptoshop_backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +57,16 @@ public class UserController {
             return userRepository.findById(id);
         else
             return new User();
+    }
+
+    @GetMapping(path="/usernameOrEmail/{emailOrUsername}")
+    public @ResponseBody User getUserByUsernameOrEmail (@PathVariable  String emailOrUsername) {
+        if (isEmailValid(emailOrUsername) && userRepository.findByEmail(emailOrUsername) != null)
+            return userRepository.findByEmail(emailOrUsername);
+        else if (userRepository.findByUsername(emailOrUsername) != null)
+            return userRepository.findByUsername(emailOrUsername);
+        else
+            return null;
     }
 }
 
