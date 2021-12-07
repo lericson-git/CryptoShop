@@ -24,7 +24,7 @@ import static org.mockito.Mockito.verify;
 
 import test.connect.myapplication.model.Post;
 
-public class MockitoTesting {
+public class ButtonTest {
     private static final String CHINA_SYMBOL = "table tennis";
     private Instrumentation mInstrumentation;
     private Activity mActivity;
@@ -40,9 +40,8 @@ public class MockitoTesting {
         mButtonOk = (Button) mActivity.findViewById(R.id.btnclickmepls);
         mButtonCancel = (ImageButton) mActivity.findViewById(R.id.btnnike);
     }
-    
     @Test
-    public void firstTest() {
+            public void firstTest() {
 
         mButtonOk.setClickable(true);
         assertTrue(mButtonOk.isClickable());
@@ -61,7 +60,6 @@ public class MockitoTesting {
 //        assertTrue(mButtonCancel.isClickable());
 //        mButtonCancel.performClick();
 //        verify(cancelButtonListener, times(1)).onClick(mButtonCancel);
-
     }
 
 
