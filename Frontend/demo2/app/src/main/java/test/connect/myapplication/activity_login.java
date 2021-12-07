@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -64,13 +66,22 @@ public class activity_login extends AppCompatActivity {
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
+                Intent next = new Intent(activity_login.this, activity_landing.class);
+                next.putExtra("userInfo", newUser);
+                User test = (User) next.getParcelableExtra("userInfo");
+                Log.d("USER", "passing " +  test.getUsername());
+                startActivity(next);
 
                 GetUserApi().userLogin(newUser.getUsername(), newUser.getHashed_pass()).enqueue(new SlimCallback<String>(string -> {
-                    if (string == "Login succesfull")
-                        //bundle.putParcelable("userInfo", newUser);
-                        startActivity(new Intent(v.getContext(), activity_landing.class));
-                    else
-                        Toast.makeText(getApplicationContext(),"Invalid Username or Password",Toast.LENGTH_SHORT).show();
+                    if (string == "Login succesfull") {
+                        /*Intent next = new Intent(activity_login.this, activity_landing.class);
+                        next.putExtra("userInfo", newUser);
+                        User test = next.getExtras().getParcelable("userInfo");
+                        Log.d("USER", "passing " + test.getUsername());
+                        startActivity(next);*/
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                    }
                 }));
 
             }
