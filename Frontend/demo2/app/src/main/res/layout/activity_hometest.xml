@@ -4,22 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".activity_hometest">
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="131dp"
+        android:layout_height="84dp"
+        android:text="$19.99 US"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.554" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="131dp"
+        android:layout_height="84dp"
+        android:text="$25.00US"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.539" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="131dp"
+        android:layout_height="84dp"
+        android:text="0.0045 BTC"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="140dp"
         android:layout_height="150dp"
+        android:background="#F8F7F7"
         android:text="Home"
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintVertical_bias="0.027" />
 
     <ImageButton
         android:id="@+id/btnfortableclock"
@@ -27,10 +71,10 @@
         android:layout_height="182dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.402"
+        app:layout_constraintVertical_bias="0.147"
         app:srcCompat="@drawable/capture" />
 
     <ImageButton
@@ -42,7 +86,75 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.427"
+        app:layout_constraintVertical_bias="0.187"
         app:srcCompat="@drawable/handclock" />
+
+    <ImageButton
+        android:id="@+id/btnnike"
+        android:layout_width="385dp"
+        android:layout_height="127dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.973"
+        app:srcCompat="@drawable/nike" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="131dp"
+        android:layout_height="84dp"
+        android:text="Table Clock"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.451" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="131dp"
+        android:layout_height="84dp"
+        android:text="0.0096 BTC"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="167dp"
+        android:layout_height="66dp"
+        android:text="Wrist Watch"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.959"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.449" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="281dp"
+        android:layout_height="85dp"
+        android:text="All Seasons Shoes. Varities of options. Best Deal!!! Don't Miss Away "
+        android:textColor="#FA0101"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.763" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

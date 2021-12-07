@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 public class activity_hometest extends AppCompatActivity {
     ImageButton btnfortableclock;
     ImageButton btnhandclock;
+    ImageButton btnnike;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,13 @@ public class activity_hometest extends AppCompatActivity {
                 third_page(view);
             }
         });
+        btnnike = (ImageButton) findViewById(R.id.btnnike);
+        btnnike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fourth_page(view);
+            }
+        });
     }
     public void second_page(View view) {
         Intent intent = new Intent(this,activity_tableclock.class);
@@ -40,6 +48,10 @@ public class activity_hometest extends AppCompatActivity {
     public void third_page(View view) {
         Intent intentone = new Intent (this, activity_handclock.class);
         startActivity(intentone);
+    }
+    public void fourth_page(View view) {
+        Intent intentsecond = new Intent(this, activity_nike.class);
+        startActivity(intentsecond);
     }
 
 

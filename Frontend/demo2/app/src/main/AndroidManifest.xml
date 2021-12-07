@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity_nike"
+            android:exported="true" />
+        <activity
             android:name=".activity_handclock"
             android:exported="true" />
         <activity
