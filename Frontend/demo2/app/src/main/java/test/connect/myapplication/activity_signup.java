@@ -21,19 +21,19 @@ import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.User;
 
 /**
- * @author Lucas Ericson
- * Signup activity that creates new user with given data.
- * Interacts with backend for input validation. It expects the user
- * to provide credentals as input and user will get success login
- * for the output
+ * page used to signup for a new account
  */
 public class activity_signup extends AppCompatActivity {
+    User user;
+    Boolean createdUser = false;
+
+    //Encrypts string base into sha256 format
 
     /**
-     * Converts given string password into a SHA-256 encrypted password and returns it.
-     * @param base the base string we are encrypting.
-     * @return encrypted string.
-     * @throws NoSuchAlgorithmException when string does not properly encrypt.
+     * hashed password into sha256 format
+     * @param base password to be hashed
+     * @return hashed password
+     * @throws NoSuchAlgorithmException
      */
     public String sha256(String base) throws NoSuchAlgorithmException {
         try {
@@ -56,11 +56,6 @@ public class activity_signup extends AppCompatActivity {
 
     }
 
-    /**
-     * onCreate for the signup activity.
-     * Sets up UI elements and button listener.
-     * @param savedInstanceState is a {@link Bundle} that stores saved instances.
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +68,6 @@ public class activity_signup extends AppCompatActivity {
         EditText passwordIn = findViewById(R.id.activity_signup_password);
 
         signupSubmit.setOnClickListener(new View.OnClickListener() {
-            /**
-             * onClick method runs when button is clicked and submits data fields to backend.
-             * @param v is the {@link View} the activity is running in.
-             */
             @Override
             public void onClick(View v) {
                 User newUser = new User();
@@ -88,15 +79,38 @@ public class activity_signup extends AppCompatActivity {
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
+
                 newUser.setBought_p(0);
                 newUser.setSold_p(0);
                 newUser.setBtc_balance(0);
+//                setUser(new User(newUser));
+
                 GetUserApi().addNewUser(newUser).enqueue(new SlimCallback<User>(user -> {
                     if (user == null)
                         Toast.makeText(getApplicationContext(),"Email or username taken",Toast.LENGTH_SHORT).show();
+                    //Pass data
+                    Bundle bundle = new Bundle();
+                    bundle.putString("user", user.getId().toString());
+                    // set MyFragment Arguments
+                    activity_account myObj = new activity_account();
+                    myObj.setArguments(bundle);
+
+                    startActivity(new Intent(v.getContext(), MainActivity.class));
                 }));
-                startActivity(new Intent(v.getContext(), MainActivity.class));
             }
         });
     }
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    protected void setUser(User user){
+//        this.user = user;
+//        createdUser = true;
+//    }
+//
+//    public Boolean getCreated(){
+//        return createdUser;
+//    }
 }
