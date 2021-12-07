@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -50,4 +51,25 @@ public class UserControllerTest {
                 .andReturn();
 
     }
+
+    @Test
+    void givenValidUsername_ReturnUser() throws Exception {
+        mvc.perform(get("/usernameOrEmail/miguel")).andExpect(status().isOk());
+    }
+
+    @Test
+    void givenValidEmail_ReturnUser() throws Exception {
+        mvc.perform(get("/usernameOrEmail/miguel@email.com")).andExpect(status().isOk());
+    }
+
+    @Test
+    void givenInvalidUsername_ReturnUser() throws Exception {
+        mvc.perform(get("/usernameOrEmail/invalid")).andExpect(status().is(400));
+    }
+
+    @Test
+    void givenInvalidEmail_ReturnUser() throws Exception {
+        mvc.perform(get("/usernameOrEmail/invalid")).andExpect(status().is(400));
+    }
+
 }

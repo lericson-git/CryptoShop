@@ -60,13 +60,13 @@ public class UserController {
     }
 
     @GetMapping(path="/usernameOrEmail/{emailOrUsername}")
-    public @ResponseBody User getUserByUsernameOrEmail (@PathVariable  String emailOrUsername) {
+    public @ResponseBody ResponseEntity<?> getUserByUsernameOrEmail (@PathVariable  String emailOrUsername) {
         if (isEmailValid(emailOrUsername) && userRepository.findByEmail(emailOrUsername) != null)
-            return userRepository.findByEmail(emailOrUsername);
+            return ResponseEntity.status(200).body(userRepository.findByEmail(emailOrUsername));
         else if (userRepository.findByUsername(emailOrUsername) != null)
-            return userRepository.findByUsername(emailOrUsername);
+            return ResponseEntity.status(200).body(userRepository.findByUsername(emailOrUsername));
         else
-            return null;
+            return ResponseEntity.status(400).build();
     }
 }
 

@@ -70,7 +70,12 @@ public class ProductControllerTest {
         Product nullProduct = new Product();
 
         //WHEN
-        mvc.perform(get("/product/-1")).andExpect(model().hasErrors());
+        mvc.perform(get("/product/-1")).andExpect(status().isOk());
+    }
+
+    @Test
+    void givenValidId_return200OK() throws Exception {
+        mvc.perform(get("/product/1")).andExpect(status().isOk());
     }
 
 }
