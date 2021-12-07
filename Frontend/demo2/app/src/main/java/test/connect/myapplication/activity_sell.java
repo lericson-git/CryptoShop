@@ -17,9 +17,11 @@ import androidx.fragment.app.Fragment;
 import test.connect.myapplication.model.Post;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link activity_sell#newInstance} factory method to
+ * @author Lucas Ericson
+ * A {@link Fragment} subclass that runs a sell activity for posting new listings.
+ * Can use the {@link activity_sell#newInstance} factory method to
  * create an instance of this fragment.
+ * Should be called from {@link MainActivity}'s NavBar.
  */
 public class activity_sell extends Fragment {
     //Activity frontend elements
@@ -31,46 +33,40 @@ public class activity_sell extends Fragment {
     Post post;
     Boolean listed = false;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    /**
+     * Empty constructor for activity
+     */
     public activity_sell() { }
 
     /**
      * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * this fragment.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment activity_home.
      */
-    // TODO: Rename and change types and number of parameters
-    public static activity_sell newInstance(String param1, String param2) {
+    public static activity_sell newInstance() {
         activity_sell fragment = new activity_sell();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-
-        fragment.setArguments(args);
         return fragment;
     }
 
+    /**
+     * onCreate method that creates instance of activity.
+     * @param savedInstanceState a {@link Bundle} needed to store the instance.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
     }
 
+    /**
+     * Creates and inflates the view for the activity.
+     * Takes post listing data from user and creates new {@link Post}.
+     * @param inflater {@link LayoutInflater} for fragment.
+     * @param container {@link View} for fragment.
+     * @param savedInstanceState {@link Bundle} for fragment.
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

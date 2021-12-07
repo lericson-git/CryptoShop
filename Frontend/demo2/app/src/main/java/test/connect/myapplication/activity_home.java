@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
+ * @author Meet Patel
+ * It displays the homepage of the account as the output.It will have
+ * navigation bar and other uses.
  * A simple {@link Fragment} subclass.
  * Use the {@link activity_home#newInstance} factory method to
  * create an instance of this fragment.

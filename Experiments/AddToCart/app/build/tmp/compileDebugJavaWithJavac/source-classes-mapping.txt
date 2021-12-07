@@ -1,0 +1,6 @@
+com/example/addtocart/mywish.java
+ com.example.addtocart.mywish
+com/example/addtocart/BuildConfig.java
+ com.example.addtocart.BuildConfig
+com/example/addtocart/MainActivity.java
+ com.example.addtocart.MainActivity

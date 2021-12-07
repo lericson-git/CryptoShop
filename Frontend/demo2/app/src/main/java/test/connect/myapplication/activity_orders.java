@@ -10,6 +10,10 @@ import android.widget.ImageButton;
 import androidx.fragment.app.Fragment;
 
 /**
+ * @author Meet Patel
+ *
+ * Gives the output of the orders that the customers placed.
+ * Customer has to provide the input of the orders
  * A simple {@link Fragment} subclass.
  * Use the {@link activity_orders#newInstance} factory method to
  * create an instance of this fragment.

@@ -20,9 +20,21 @@ import java.util.Arrays;
 import test.connect.myapplication.api.SlimCallback;
 import test.connect.myapplication.model.User;
 
+/**
+ * page used to signup for a new account
+ */
 public class activity_signup extends AppCompatActivity {
+    User user;
+    Boolean createdUser = false;
 
     //Encrypts string base into sha256 format
+
+    /**
+     * hashed password into sha256 format
+     * @param base password to be hashed
+     * @return hashed password
+     * @throws NoSuchAlgorithmException
+     */
     public String sha256(String base) throws NoSuchAlgorithmException {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -67,15 +79,38 @@ public class activity_signup extends AppCompatActivity {
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
+
                 newUser.setBought_p(0);
                 newUser.setSold_p(0);
                 newUser.setBtc_balance(0);
+//                setUser(new User(newUser));
+
                 GetUserApi().addNewUser(newUser).enqueue(new SlimCallback<User>(user -> {
                     if (user == null)
                         Toast.makeText(getApplicationContext(),"Email or username taken",Toast.LENGTH_SHORT).show();
+                    //Pass data
+                    Bundle bundle = new Bundle();
+                    bundle.putString("user", user.getId().toString());
+                    // set MyFragment Arguments
+                    activity_account myObj = new activity_account();
+                    myObj.setArguments(bundle);
+
+                    startActivity(new Intent(v.getContext(), MainActivity.class));
                 }));
-                startActivity(new Intent(v.getContext(), MainActivity.class));
             }
         });
     }
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    protected void setUser(User user){
+//        this.user = user;
+//        createdUser = true;
+//    }
+//
+//    public Boolean getCreated(){
+//        return createdUser;
+//    }
 }
