@@ -74,27 +74,27 @@ public class activity_orders extends Fragment {
         btntableclock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentloadnewactivity = new Intent(getActivity(), activity_tableclock.class);
+                Intent intentloadnewactivity = new Intent(getActivity(), activity_third.class);
                 startActivity(intentloadnewactivity);
 
             }
         });
-        btnplant = v.findViewById(R.id.btnplant);
-        btnplant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), activity_plant.class);
-                startActivity(intent);
-            }
-        });
-        btnlipstick = v.findViewById(R.id.btnlipstick);
-        btnlipstick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentsecond = new Intent(getActivity(), activity_lipstick.class);
-                startActivity(intentsecond);
-            }
-        });
+//        btnplant = v.findViewById(R.id.btnplant);
+//        btnplant.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), activity_plant.class);
+//                startActivity(intent);
+//            }
+//        });
+//        btnlipstick = v.findViewById(R.id.btnlipstick);
+//        btnlipstick.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentsecond = new Intent(getActivity(), activity_lipstick.class);
+//                startActivity(intentsecond);
+//            }
+//        });
 
 
         return v;
