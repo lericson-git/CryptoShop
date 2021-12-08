@@ -14,22 +14,25 @@ public class Product {
     private String description;
     private Double price;
     private String p_condition; //maybe this crashes MySQL since condition it's a reserved word.
-    private String mainTag;
-    private String subTag;
+    private String main_tag;
+    private String sub_tag;
     private Double weight;
     private Double height;
     private Double width;
     private Double length;
-    private Integer sellerId;
-    private Integer buyerId;
-    private boolean hasBeenBought;
+    private Integer seller_id;
+    private Integer buyer_id;
+    private boolean has_been_bought;
 
-    public boolean isHasBeenBought() {
-        return hasBeenBought;
+    public Product() {
     }
 
-    public void setHasBeenBought(boolean hasBeenBought) {
-        this.hasBeenBought = hasBeenBought;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -56,28 +59,28 @@ public class Product {
         this.price = price;
     }
 
-    public String getCondition() {
+    public String getP_condition() {
         return p_condition;
     }
 
-    public void setCondition(String condition) {
-        this.p_condition = condition;
+    public void setP_condition(String p_condition) {
+        this.p_condition = p_condition;
     }
 
-    public String getMainTag() {
-        return mainTag;
+    public String getMain_tag() {
+        return main_tag;
     }
 
-    public void setMainTag(String main_tag) {
-        this.mainTag = main_tag;
+    public void setMain_tag(String main_tag) {
+        this.main_tag = main_tag;
     }
 
-    public String getSubTag() {
-        return subTag;
+    public String getSub_tag() {
+        return sub_tag;
     }
 
-    public void setSubTag(String sub_tag) {
-        this.subTag = sub_tag;
+    public void setSub_tag(String sub_tag) {
+        this.sub_tag = sub_tag;
     }
 
     public Double getWeight() {
@@ -112,27 +115,27 @@ public class Product {
         this.length = length;
     }
 
-    public Integer getSellerId() {
-        return sellerId;
+    public Integer getSeller_id() {
+        return seller_id;
     }
 
-    public void setSellerId(Integer seller_id) {
-        this.sellerId = seller_id;
+    public void setSeller_id(Integer seller_id) {
+        this.seller_id = seller_id;
     }
 
-    public Integer getBuyerId() {
-        return buyerId;
+    public Integer getBuyer_id() {
+        return buyer_id;
     }
 
-    public void setBuyerId(Integer buyer_id) {
-        this.buyerId = buyer_id;
+    public void setBuyer_id(Integer buyer_id) {
+        this.buyer_id = buyer_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public boolean isHas_been_bought() {
+        return has_been_bought;
     }
 
-    public Integer getId() {
-        return id;
+    public void setHas_been_bought(boolean has_been_bought) {
+        this.has_been_bought = has_been_bought;
     }
 }

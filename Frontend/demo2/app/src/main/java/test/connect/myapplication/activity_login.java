@@ -10,17 +10,29 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.concurrent.atomic.AtomicInteger;
 
+import okhttp3.ResponseBody;
 import test.connect.myapplication.api.SlimCallback;
+import test.connect.myapplication.model.LoginDTO;
 import test.connect.myapplication.model.User;
 
-// Login activity does good job
-
+/**
+ * login page for the app
+ */
 public class activity_login extends AppCompatActivity {
 
+    /**
+     * used to hash the password
+     * @param base password to hash
+     * @return hashed password
+     * @throws NoSuchAlgorithmException
+     */
     public String sha256(String base) throws NoSuchAlgorithmException {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -42,7 +54,7 @@ public class activity_login extends AppCompatActivity {
 
     }
 
-    // Done a nice job in implementing the stuff
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,57 +70,41 @@ public class activity_login extends AppCompatActivity {
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User newUser = new User();
-                newUser.setName(etUsername.getText().toString());
+                LoginDTO loginUser = new LoginDTO();
+                loginUser.setUsernameOrEmail(etUsername.getText().toString());
                 try {
-                    newUser.setHashed_pass(sha256(etPassword.getText().toString()));
+                    loginUser.setPassword(sha256(etPassword.getText().toString()));
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
 
-                GetUserApi().userLogin(newUser.getUsername(), newUser.getHashed_pass()).enqueue(new SlimCallback<String>(string -> {
-                    if (string == "Login succesfull")
-                        startActivity(new Intent(v.getContext(), activity_landing.class));
+
+                GetUserApi().userLogin(loginUser).enqueue(new SlimCallback<ResponseBody>(response -> {
+                    String res = "";
+                    try {
+                        res = response.string();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("\n\n\nHERE\n"+res);
+                    if(res.equals("Login succesfull")) {
+                        Intent intent = new Intent(v.getContext(), MainActivity.class);
+                        GetUserApi().getUsernameOrEmail(loginUser.getUsernameOrEmail()).enqueue(new SlimCallback<User>(user -> {
+//                            //Pass data
+//                            Bundle bundle = new Bundle();
+//                            bundle.putString("user", user.getId().toString());
+//                            // set MyFragment Arguments
+//                            activity_account myObj = new activity_account();
+//                            myObj.setArguments(bundle);
+                            intent.putExtra("user", user.getId().toString());
+                        }));
+                        startActivity(intent);
+                    }
                     else
                         Toast.makeText(getApplicationContext(),"Invalid Username or Password",Toast.LENGTH_SHORT).show();
                 }));
-
             }
-        // could have done better maybe to remove the code in order to make it look nicer
-
-        // f
-/*        btSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(etUsername.getText().toString().equals("admin") &&
-                        etPassword.getText().toString().equals("admin")) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(
-                            activity_login.this
-                    );
-                    builder.setIcon(R.drawable.ic_check);
-                    builder.setTitle("Login Successfully !!!");
-                    builder.setMessage("Welcome Admin");
-                    builder.setNegativeButton("YES", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-
-                        }
-                    });
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
-                   // Intent in = new Intent(activity_login.this, MainActivity2.class);
-                    //startActivity(in);
-
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "Invalid Username & Password",
-                            Toast.LENGTH_SHORT).show();
-
-
-                }
-            }
-        }); */
-    });
+        });
     }
+
 }

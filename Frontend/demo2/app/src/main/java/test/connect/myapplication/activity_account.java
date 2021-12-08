@@ -1,21 +1,33 @@
 package test.connect.myapplication;
 
+import static test.connect.myapplication.api.ApiClientFactory.GetProductApi;
+import static test.connect.myapplication.api.ApiClientFactory.GetUserApi;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import test.connect.myapplication.api.SlimCallback;
+import test.connect.myapplication.model.Post;
+import test.connect.myapplication.model.User;
+
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link activity_account#newInstance} factory method to
- * create an instance of this fragment.
+ * This is the account page for the app
  */
 public class activity_account extends Fragment {
     private Button btn1;
+
+    TextView userName, userUsername, userEmail, userBalance;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,18 +76,52 @@ public class activity_account extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View views = inflater.inflate(R.layout.fragment_account, container, false);
-        btn1 = views.findViewById(R.id.btn1);
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent start = new Intent(getActivity(), activity_hometest.class);
-                startActivity(start);
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+
+
+//        String strtext = getArguments().getString("user");
+
+        String strtext = "10";
+
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString("user");
+//        }
+        int userId = 1;
+        //    strtext = activity.getMyData();
+
+        strtext = "14";
+
+
+        try{
+            userId = Integer.parseInt(strtext);
+            System.out.println(userId); // output = 25
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
+
+
+        userName = view.findViewById(R.id.fragment_account_name);
+        userEmail = view.findViewById(R.id.fragment_account_email);
+        userUsername = view.findViewById(R.id.fragment_account_username);
+        userBalance = view.findViewById(R.id.fragment_account_balance);
+
+        GetUserApi().getUserById(userId).enqueue(new SlimCallback<User>(user -> {
+            if (user == null)
+                Toast.makeText(view.getContext(),"Error Retrieving Account",Toast.LENGTH_SHORT).show();
+            else{
+                userName.setText("");
+                userEmail.setText("");
+                userUsername.setText("");
+                userBalance.setText("");
+
+                userName.append(user.getName());
+                userEmail.append(user.getEmail());
+                userUsername.append(user.getUsername());
+                userBalance.append(Double.toString(user.getBtc_balance()));
             }
-        });
-        return views;
+        }));
 
-
-
+        return view;
     }
 }

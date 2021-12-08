@@ -20,14 +20,14 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping(path = "/signUp")
-    User addNewUser(@RequestBody User newUser) {
-        if (!isEmailValid(newUser.getEmail()))
-            return null;
+    ResponseEntity<?> addNewUser(@RequestBody User newUser) {
+        if (newUser.getEmail() == null || !isEmailValid(newUser.getEmail()))
+            return ResponseEntity.status(400).build();
         if (userRepository.findByEmail(newUser.getEmail()) != null || userRepository.findByUsername(newUser.getEmail()) != null)
-            return null;
+            return ResponseEntity.status(400).build();
 
         userRepository.save(newUser);
-        return newUser;
+        return ResponseEntity.status(200).build();
     }
 
     @GetMapping(path = "/allUsers")
@@ -49,6 +49,24 @@ public class UserController {
             return ResponseEntity.badRequest().body("Incorrect password or user not found :(");
         else
             return ResponseEntity.ok("Login succesfull");
+    }
+
+    @GetMapping(path="user/{id}")
+    public @ResponseBody User getUserById(@PathVariable int id) {
+        if (userRepository.findById(id) != null)
+            return userRepository.findById(id);
+        else
+            return new User();
+    }
+
+    @GetMapping(path="/usernameOrEmail/{emailOrUsername}")
+    public @ResponseBody ResponseEntity<?> getUserByUsernameOrEmail (@PathVariable  String emailOrUsername) {
+        if (isEmailValid(emailOrUsername) && userRepository.findByEmail(emailOrUsername) != null)
+            return ResponseEntity.status(200).body(userRepository.findByEmail(emailOrUsername));
+        else if (userRepository.findByUsername(emailOrUsername) != null)
+            return ResponseEntity.status(200).body(userRepository.findByUsername(emailOrUsername));
+        else
+            return ResponseEntity.status(400).build();
     }
 }
 

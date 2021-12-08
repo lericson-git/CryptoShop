@@ -1,15 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray">
+    android:background="@android:color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/design_default_color_error">
+    <TextView
+        android:id="@+id/fragment_account_email"
+        android:layout_width="237dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:hint="johndoe@gmail.com"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_account_labelEmail"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_account_name" />
+
+    <TextView
+        android:id="@+id/fragment_account_username"
+        android:layout_width="232dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="20dp"
+        android:hint="johndoe1"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_account_labelUsername"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_account_email" />
+
+    <TextView
+        android:id="@+id/fragment_account_balance"
+        android:layout_width="161dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:hint="500.00"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toEndOf="@+id/fragment_account_labelBalance"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_account_username" />
+
+    <TextView
+        android:id="@+id/fragment_account_name"
+        android:layout_width="232dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="36dp"
+        android:hint="John Doe"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toEndOf="@+id/fragment_account_labelName"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_account_title" />
+
+    <TextView
+        android:id="@+id/fragment_account_labelBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Balance: "
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_account_labelUsername" />
+
+    <TextView
+        android:id="@+id/fragment_account_labelUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Username:"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_account_labelEmail" />
+
+    <TextView
+        android:id="@+id/fragment_account_labelEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Email:"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_account_labelName" />
+
+    <TextView
+        android:id="@+id/fragment_account_labelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Name:"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_account_title" />
+
+    <TextView
+        android:id="@+id/fragment_account_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Account"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
@@ -76,4 +177,4 @@
             app:layout_constraintVertical_bias="0.001" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
