@@ -22,6 +22,7 @@ public class activity_orders extends Fragment {
     private ImageButton btntableclock;
     private ImageButton btnplant;
     private ImageButton btnlipstick;
+    private ImageButton btnclickmepls;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,13 +71,21 @@ public class activity_orders extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_orders, container, false);
-        btntableclock = v.findViewById(R.id.btntableclock);
-        btntableclock.setOnClickListener(new View.OnClickListener() {
+//        btntableclock = v.findViewById(R.id.btntableclock);
+//        btntableclock.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentloadnewactivity = new Intent(getActivity(), activity_third.class);
+//                startActivity(intentloadnewactivity);
+//
+//            }
+//        });
+        btnclickmepls = v.findViewById(R.id.btnclickmesorry);
+        btnclickmepls.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentloadnewactivity = new Intent(getActivity(), activity_third.class);
-                startActivity(intentloadnewactivity);
-
+                Intent intenthumesha = new Intent(getActivity(), activity_third.class);
+                startActivity(intenthumesha);
             }
         });
 //        btnplant = v.findViewById(R.id.btnplant);

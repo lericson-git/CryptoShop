@@ -46,6 +46,11 @@ public class MockitoTesting {
 
         mButtonOk.setClickable(true);
         assertTrue(mButtonOk.isClickable());
+
+
+
+
+
 //        View.OnClickListener okButtonListener = spy(new MockOnClickOkListener());
 //        mButtonOk.setOnClickListener(okButtonListener);
 //        mButtonOk.performClick();
