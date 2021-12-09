@@ -1,8 +1,11 @@
 package test.connect.myapplication.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Post {
+public class Post implements Parcelable {
     private int userId;
     private int id;
     private String title;
@@ -56,6 +59,17 @@ public class Post {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    //Need to implement Parcelable to pass class between fragments
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
     }
 }
 

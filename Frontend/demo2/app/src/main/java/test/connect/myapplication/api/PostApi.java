@@ -8,4 +8,6 @@ public interface PostApi{
 
     @GET("posts/1")
     Call<Post> getFirstPost();
+
+
 }
