@@ -1,6 +1,7 @@
 package test.connect.myapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import test.connect.myapplication.model.User;
 
 /**
  * @author Lucas Ericson
@@ -48,6 +51,16 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
 
+                    //Get User from extras
+                    User user;
+                    Bundle extras = getIntent().getExtras();
+                    if (extras == null) {
+                        user = null;
+                    } else {
+                        user = (User) extras.getParcelable("userInfo");
+                        Log.d("USER", "MainActivity Received Account: " + user.getUsername() + user.printable());
+                    }
+
                     switch (item.getItemId()) {
                         case R.id.nav_home:
                             selectedFragment = new activity_home();
@@ -59,10 +72,10 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new activity_sell();
                             break;
                         case R.id.nav_orders:
-                            selectedFragment = new activity_orders();
+                            selectedFragment = activity_orders.newInstance(user);
                             break;
                         case R.id.nav_account:
-                            selectedFragment = new activity_account();
+                            selectedFragment = activity_account.newInstance(user);
                             break;
                     }
 

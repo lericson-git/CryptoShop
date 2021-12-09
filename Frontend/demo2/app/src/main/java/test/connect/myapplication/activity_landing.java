@@ -33,22 +33,13 @@ public class activity_landing extends AppCompatActivity {
 
         //Get User from extras
         User user;
-        /*if (savedInstanceState == null) {*/
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
             user = null;
         } else {
             user = (User) extras.getParcelable("userInfo");
-            Log.d("USER", "Account: " + user.getUsername());
+            Log.d("USER", this.getLocalClassName() + " Received Account: " + user.getUsername());
         }
-        Log.d("USER", "Account: NULL");
-
-        /*
-        } else {
-            user = savedInstanceState.getParcelable("userInfo");
-        }
-        */
-
 
         Button btnLogin = findViewById(R.id.activity_landing_btnLogin);
         Button btnSignup = findViewById(R.id.activity_landing_btnSignup);

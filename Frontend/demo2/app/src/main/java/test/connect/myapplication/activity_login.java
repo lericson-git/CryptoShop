@@ -80,10 +80,15 @@ public class activity_login extends AppCompatActivity {
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
-                Intent next = new Intent(activity_login.this, activity_landing.class);
+                //Setting up User class to be passed (this should be removed when backend implemented)
+                User newUser = new User();
+                newUser.setUsername(loginUser.getUsernameOrEmail());
+                newUser.setHashed_pass(loginUser.getPassword());
+
+                Intent next = new Intent(activity_login.this, MainActivity.class);
                 next.putExtra("userInfo", newUser);
                 User test = (User) next.getParcelableExtra("userInfo");
-                Log.d("USER", "passing " +  test.getUsername());
+                Log.d("USER", "Logged in user: " +  test.getUsername());
                 startActivity(next);
 
 
@@ -98,12 +103,6 @@ public class activity_login extends AppCompatActivity {
                     if(res.equals("Login succesfull")) {
                         Intent intent = new Intent(v.getContext(), MainActivity.class);
                         GetUserApi().getUsernameOrEmail(loginUser.getUsernameOrEmail()).enqueue(new SlimCallback<User>(user -> {
-//                            //Pass data
-//                            Bundle bundle = new Bundle();
-//                            bundle.putString("user", user.getId().toString());
-//                            // set MyFragment Arguments
-//                            activity_account myObj = new activity_account();
-//                            myObj.setArguments(bundle);
                             intent.putExtra("user", user.getId().toString());
                         }));
                         startActivity(intent);
