@@ -1,0 +1,4 @@
+com/example/demo3/MainActivity.java
+ com.example.demo3.MainActivity
+com/example/demo3/BuildConfig.java
+ com.example.demo3.BuildConfig

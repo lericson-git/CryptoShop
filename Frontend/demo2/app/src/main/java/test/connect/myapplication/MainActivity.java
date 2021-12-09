@@ -9,8 +9,17 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * @author Lucas Ericson
+ * MainActivity class creates navigation bar and stores saved instances.
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * When MainActivity is initialized onCreate makes {@link BottomNavigationView}
+     * bottomNav for storing different {@link Fragment} sub-class activities.
+     * @param savedInstances is a {@link Bundle} that stores saved instances.
+     */
     @Override
     protected void onCreate(Bundle savedInstances){
         super.onCreate(savedInstances);
@@ -26,8 +35,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
+                /**
+                 * Method for changing currently selected {@link Fragment}
+                 * when selected in the navbar
+                 * @param item a {@link MenuItem} that stores a fragment id
+                 * @return
+                 */
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;

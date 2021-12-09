@@ -13,6 +13,18 @@ public class Post implements Parcelable {
     @SerializedName("body")
     private String bigText;
 
+    public Post() {}
+
+    public Post(String text) {
+        title = text;
+    }
+
+    public Post(String text, int price, String desc) {
+        title = text;
+        this.price = price;
+        bigText = desc;
+    }
+
     public int getUserId() {
         return userId;
     }
