@@ -40,7 +40,6 @@ public class activity_account extends Fragment {
      * @param userObj User class
      * @return A new instance of fragment activity_home.
      */
-    // TODO: Rename and change types and number of parameters
     public static activity_account newInstance(Parcelable userObj) {
         activity_account fragment = new activity_account();
         Bundle args = new Bundle();

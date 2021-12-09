@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     User user;
                     Bundle extras = getIntent().getExtras();
                     if (extras == null) {
-                        user = null;
+                        user = new User();
                     } else {
                         user = (User) extras.getParcelable("userInfo");
                         Log.d("USER", "MainActivity Received Account: " + user.getUsername() + user.printable());
