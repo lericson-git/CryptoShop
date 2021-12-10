@@ -1,7 +1,9 @@
 package test.connect.myapplication;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,11 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.fragment.app.Fragment;
 
 import test.connect.myapplication.model.Post;
+import test.connect.myapplication.model.Product;
 
 /**
  * @author Lucas Ericson
@@ -28,9 +32,9 @@ public class activity_sell extends Fragment {
     Button btn;
     EditText prodNameText, priceText, descriptonText;
     String prodName, descripton;
-    int price;
+    double price;
     View view;
-    Post post;
+    Product prod;
     Boolean listed = false;
 
     /**
@@ -78,12 +82,20 @@ public class activity_sell extends Fragment {
         descriptonText = view.findViewById(R.id.inputDescription);
 
         btn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.Q)
             @Override
             public void onClick(View view) {
+                Product prod = new Product();
                 prodName = prodNameText.getText().toString();
-                price = Integer.parseInt(priceText.getText().toString());
+                price = Double.parseDouble(priceText.getText().toString());
                 descripton = descriptonText.getText().toString();
-                setPost(new Post(prodName, price, descripton));
+                prod.setName(prodName);
+                prod.setPrice(price);
+                prod.setDescription(descripton);
+                setProduct(prod);
+
+                activity_search.addProduct(prod);
+                Log.d("PRODUCT", "sell_activity added " + prod.getName());
                 
                 Context context = getContext();
                 Toast toast = Toast.makeText(context, "Product Listed", Toast.LENGTH_SHORT);
@@ -93,13 +105,13 @@ public class activity_sell extends Fragment {
         return view;
     }
 
-    public Post getPost() {
-        return post;
+    public Product getProd() {
+        return prod;
     }
 
     //Testing method
-    protected void setPost(Post post) {
-        this.post = post;
+    protected void setProduct(Product product) {
+        this.prod = prod;
         listed = true;
     }
 

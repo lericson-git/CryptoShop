@@ -15,6 +15,7 @@ import android.widget.SearchView;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,69 +34,24 @@ import test.connect.myapplication.model.User;
  */
 
 //Code review:- activity search does
+@RequiresApi(api = Build.VERSION_CODES.Q)
 public class activity_search extends Fragment implements SearchView.OnQueryTextListener{
     View view;
     ListView list;
     ListViewAdapter adapter;
     SearchView search;
-    static ArrayList<Product> productList = new ArrayList<Product>();
+    ArrayList<Product> productList = new ArrayList<Product>();
+    static ArrayList<Product> staticList = new ArrayList<Product>();
+    static boolean updated = false;
     private static final String USER_INFO = "userObj";
     private Parcelable userObj;
 
     /**
      * Empty constructor for activity
      */
-    public activity_search() {
-        // Required empty public constructor
-    }
-
-    // great job in providing comments again
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment.
-     *
-     * @return A new instance of activity_home.
-     */
-    public static activity_search newInstance(Parcelable userObj) {
-        activity_search fragment = new activity_search();
-        Bundle args = new Bundle();
-        args.putParcelable(USER_INFO, userObj);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public static void addProduct(Product prod) {
-        productList.add(prod);
-    }
-
-    /**
-     * Runs first, creates instance of fragment.
-     * @param savedInstanceState a {@link Bundle} needed to store the instance.
-     */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    /**
-     * Inflates fragment view given app parameters needed.
-     * @param inflater {@link LayoutInflater} for fragment.
-     * @param container {@link View} for fragment.
-     * @param savedInstanceState {@link Bundle} for fragment.
-     * @return
-     */
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_search, container, false);
-
-        SearchView searchView = (SearchView) view.findViewById(R.id.searchView); // inititate a search view
-        CharSequence query = searchView.getQuery(); // get the query string currently in the text field
-
+    public activity_search() {
         // Sample data
-        List<Product> productList = new ArrayList<Product>();
         Product artNFT = new Product();
         artNFT.setName("Digital Art NFT");
         artNFT.setCondition("Brand new");
@@ -117,6 +73,59 @@ public class activity_search extends Fragment implements SearchView.OnQueryTextL
         iPhone.setId(productList.size());
         iPhone.setPrice(3.84);
         productList.add(iPhone);
+    }
+
+    // great job in providing comments again
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment.
+     *
+     * @return A new instance of activity_home.
+     */
+
+    public static activity_search newInstance(Parcelable userObj) {
+        activity_search fragment = new activity_search();
+        Bundle args = new Bundle();
+        args.putParcelable(USER_INFO, userObj);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    public static void addProduct(Product prod) {
+        staticList.add(prod);
+        updated = true;
+        Log.d("PRODUCT", prod.getName() + " added to productList");
+    }
+
+    /**
+     * Runs first, creates instance of fragment.
+     * @param savedInstanceState a {@link Bundle} needed to store the instance.
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        for (Product prod: staticList) {
+            productList.add(prod);
+        }
+    }
+
+    /**
+     * Inflates fragment view given app parameters needed.
+     * @param inflater {@link LayoutInflater} for fragment.
+     * @param container {@link View} for fragment.
+     * @param savedInstanceState {@link Bundle} for fragment.
+     * @return
+     */
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_search, container, false);
+        SearchView searchView = (SearchView) view.findViewById(R.id.searchView); // inititate a search view
+        CharSequence query = searchView.getQuery(); // get the query string currently in the text field
 
         list = (ListView) view.findViewById(R.id.listView);
 
