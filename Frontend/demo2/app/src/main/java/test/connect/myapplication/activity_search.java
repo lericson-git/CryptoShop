@@ -14,12 +14,7 @@ import android.widget.SearchView;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-
-import test.connect.myapplication.model.Post;
 import test.connect.myapplication.model.Product;
 import test.connect.myapplication.model.User;
 
@@ -95,7 +90,7 @@ public class activity_search extends Fragment implements SearchView.OnQueryTextL
     public static void addProduct(Product prod) {
         staticList.add(prod);
         updated = true;
-        Log.d("PRODUCT", prod.getName() + " added to productList");
+        //Log.d("PRODUCT", prod.getName() + " added to productList");
     }
 
     /**
