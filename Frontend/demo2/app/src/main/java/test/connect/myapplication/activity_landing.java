@@ -2,10 +2,16 @@ package test.connect.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import test.connect.myapplication.model.User;
 
 /**
  * @author Lucas Ericson
@@ -25,6 +31,15 @@ public class activity_landing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
+        //Get User from extras
+        User user;
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) {
+            user = null;
+        } else {
+            user = (User) extras.getParcelable("userInfo");
+            Log.d("USER", this.getLocalClassName() + " Received Account: " + user.getUsername());
+        }
 
         Button btnLogin = findViewById(R.id.activity_landing_btnLogin);
         Button btnSignup = findViewById(R.id.activity_landing_btnSignup);

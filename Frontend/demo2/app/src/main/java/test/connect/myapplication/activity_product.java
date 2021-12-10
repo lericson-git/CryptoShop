@@ -2,10 +2,13 @@ package test.connect.myapplication;
 
 import static test.connect.myapplication.api.ApiClientFactory.GetProductApi;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,15 +26,21 @@ import test.connect.myapplication.model.User;
  */
 public class activity_product extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        int productId = 2;
+        //Get User from extras
+        Product prod;
         Bundle extras = getIntent().getExtras();
-        if(extras != null)
-            productId = extras.getInt("product");
+        if (extras == null) {
+            prod = new Product();
+        } else {
+            prod = (Product) extras.getParcelable("prodInfo");
+            Log.d("PRODUCT", "activity_product received Product: " + prod.getName());
+        }
 
         Button backButton = findViewById(R.id.activity_product_backButton);
         Button buyButton = findViewById(R.id.activity_product_buyButton);
@@ -42,25 +51,27 @@ public class activity_product extends AppCompatActivity {
         TextView productMainTag = findViewById(R.id.activity_product_productMainTag);
         TextView productSubTag = findViewById(R.id.activity_product_productSubTag);
 
-        GetProductApi().getProductById(1).enqueue(new SlimCallback<Product>(product -> {
+        productName.setText(prod.getName());
+        productPrice.setText(Double.toString(prod.getPrice()));
+        productDescription.setText(prod.getDescription());
+        productCondition.setText(prod.getCondition());
+
+        /*GetProductApi().getProductById(1).enqueue(new SlimCallback<Product>(product -> {
             if (product == null)
                 Toast.makeText(getApplicationContext(),"Error Retrieving Product",Toast.LENGTH_SHORT).show();
             else{
-                productName.setText("");
-                productPrice.setText("");
-                productDescription.setText("");
-                productCondition.setText("");
-                productMainTag.setText("");
-                productSubTag.setText("");
+
+                productMainTag.setText();
+                productSubTag.setText();
 
                 productName.append(product.getName());
                 productPrice.append("$" + product.getPrice().toString());
                 productDescription.append("Description: "+product.getDescription());
                 productCondition.append("Condition: "+product.getCondition());
-                // productMainTag.append(product.getMainTag());
-                // productSubTag.append(product.getSubTag());
+                productMainTag.append(product.getMainTag());
+                productSubTag.append(product.getSubTag());
             }
-        }));
+        })); */
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,19 +12,24 @@ import java.util.List;
 import java.util.Locale;
 
 import test.connect.myapplication.model.Post;
-// Everything looks perfect could have provided comments to explain the code
+import test.connect.myapplication.model.Product;
+
+/**
+ * ListViewAdapter class works as for the search fragment to filter what you are typing with the database
+ */
 public class ListViewAdapter extends BaseAdapter {
     // Declare Variables
     Context mContext;
     LayoutInflater inflater;
-    private List<Post> productList = null;
-    private ArrayList<Post> arraylist;
+    private List<Product> productList = null;
+    private ArrayList<Product> arraylist;
 
-    public ListViewAdapter(Context context, List<Post> productList) {
+    //This
+    public ListViewAdapter(Context context, List<Product> productList) {
         mContext = context;
         this.productList = productList;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<Post>();
+        this.arraylist = new ArrayList<Product>();
         this.arraylist.addAll(productList);
     }
 
@@ -38,7 +43,7 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public Post getItem(int position) {
+    public Product getItem(int position) {
         return productList.get(position);
     }
 
@@ -59,7 +64,7 @@ public class ListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
         // Set the results into TextViews
-        holder.name.setText(productList.get(position).getTitle());
+        holder.name.setText(productList.get(position).getName());
         return view;
     }
 
@@ -70,8 +75,8 @@ public class ListViewAdapter extends BaseAdapter {
         if (charText.length() == 0) {
             productList.addAll(arraylist);
         } else {
-            for (Post wp : arraylist) {
-                if (wp.getTitle().toLowerCase(Locale.getDefault()).contains(charText)) {
+            for (Product wp : arraylist) {
+                if (wp.getName().toLowerCase(Locale.getDefault()).contains(charText)) {
                     productList.add(wp);
                 }
             }

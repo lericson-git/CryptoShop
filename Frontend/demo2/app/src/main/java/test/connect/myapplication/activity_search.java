@@ -1,17 +1,26 @@
 package test.connect.myapplication;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import test.connect.myapplication.model.Post;
+import test.connect.myapplication.model.Product;
+import test.connect.myapplication.model.User;
 
 /**
  * @author Lucas Ericson
@@ -29,8 +38,9 @@ public class activity_search extends Fragment implements SearchView.OnQueryTextL
     ListView list;
     ListViewAdapter adapter;
     SearchView search;
-    String[] productList;
-    ArrayList<Post> arraylist = new ArrayList<Post>();
+    static ArrayList<Product> productList = new ArrayList<Product>();
+    private static final String USER_INFO = "userObj";
+    private Parcelable userObj;
 
     /**
      * Empty constructor for activity
@@ -46,14 +56,16 @@ public class activity_search extends Fragment implements SearchView.OnQueryTextL
      *
      * @return A new instance of activity_home.
      */
-    // TODO: Rename and change types and number of parameters
-    public static activity_search newInstance() {
+    public static activity_search newInstance(Parcelable userObj) {
         activity_search fragment = new activity_search();
         Bundle args = new Bundle();
-        //args.putString(ARG_PARAM1, param1);
-        //args.putString(ARG_PARAM2, param2);
-        //fragment.setArguments(args);
+        args.putParcelable(USER_INFO, userObj);
+        fragment.setArguments(args);
         return fragment;
+    }
+
+    public static void addProduct(Product prod) {
+        productList.add(prod);
     }
 
     /**
@@ -72,6 +84,7 @@ public class activity_search extends Fragment implements SearchView.OnQueryTextL
      * @param savedInstanceState {@link Bundle} for fragment.
      * @return
      */
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -82,20 +95,45 @@ public class activity_search extends Fragment implements SearchView.OnQueryTextL
         CharSequence query = searchView.getQuery(); // get the query string currently in the text field
 
         // Sample data
-        productList = new String[]{"Lawn Chair", "Alarm Clock", "Dog",
-                "Cat", "Bike", "Plates", "Wine Bottle", "Headphones",
-                "Media NFT","Harry Potter Books","Movie Collection"};
+        List<Product> productList = new ArrayList<Product>();
+        Product artNFT = new Product();
+        artNFT.setName("Digital Art NFT");
+        artNFT.setCondition("Brand new");
+        artNFT.setDescription("A newly minted digital art NFT from rising artist JerryFromTwitter! Buy now and it's value will surely raise over time!");
+        artNFT.setId(productList.size());
+        artNFT.setPrice(5.15);
+        productList.add(artNFT);
+        Product bookCollection = new Product();
+        bookCollection.setName("Classic Book Collection");
+        bookCollection.setCondition("Some as old as 100 years, all kept in pristine condition and untouched.");
+        bookCollection.setDescription("One dozen books ranging from 100 years old to 50 years old, all kept in great condition and looked after. Includes rare classics and original prints.");
+        bookCollection.setId(productList.size());
+        bookCollection.setPrice(0.01);
+        productList.add(bookCollection);
+        Product iPhone = new Product();
+        iPhone.setName("iPhone 12");
+        iPhone.setCondition("Brand New");
+        iPhone.setDescription("Unopened iPhone 12 case from BestBuy, reselling online due to scalpers! Warranty is still valid.");
+        iPhone.setId(productList.size());
+        iPhone.setPrice(3.84);
+        productList.add(iPhone);
 
         list = (ListView) view.findViewById(R.id.listView);
 
-        for (int i = 0; i < productList.length; i++) {
-            Post product = new Post(productList[i]);
-            arraylist.add(product);
-        }
-
         // Pass results to test.connect.myapplication.ListViewAdapter Class
-        adapter = new ListViewAdapter(this.getContext(), arraylist);
+        adapter = new ListViewAdapter(this.getContext(), productList);
         list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Product prod = adapter.getItem(position);
+                Intent next = new Intent(getActivity(), activity_product.class);
+                next.putExtra("prodInfo", prod);
+                Product test = (Product) next.getParcelableExtra("prodInfo");
+                Log.d("PRODUCT", "Passing Product: " +  test.getName());
+                startActivity(next);
+            }
+        });
         search = (SearchView) view.findViewById(R.id.searchView);
         search.setOnQueryTextListener(this);
 

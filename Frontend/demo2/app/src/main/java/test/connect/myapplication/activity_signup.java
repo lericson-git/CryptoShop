@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,11 +27,8 @@ import test.connect.myapplication.model.User;
 public class activity_signup extends AppCompatActivity {
     User user;
     Boolean createdUser = false;
-
-    //Encrypts string base into sha256 format
-
     /**
-     * hashed password into sha256 format
+     * hashes password into sha256 format
      * @param base password to be hashed
      * @return hashed password
      * @throws NoSuchAlgorithmException
@@ -79,13 +77,16 @@ public class activity_signup extends AppCompatActivity {
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
+                newUser.setBtc_balance(500);
 
-                newUser.setBought_p(0);
-                newUser.setSold_p(0);
-                newUser.setBtc_balance(0);
-//                setUser(new User(newUser));
+                //Setting up User class to be passed (this should be removed when backend implemented)
+                Intent next = new Intent(activity_signup.this, MainActivity.class);
+                next.putExtra("userInfo", newUser);
+                User test = (User) next.getParcelableExtra("userInfo");
+                Log.d("USER", "Signed up user: " +  test.getUsername() + test.printable());
+                startActivity(next);
 
-                GetUserApi().addNewUser(newUser).enqueue(new SlimCallback<User>(user -> {
+                /* GetUserApi().addNewUser(newUser).enqueue(new SlimCallback<User>(user -> {
                     if (user == null)
                         Toast.makeText(getApplicationContext(),"Email or username taken",Toast.LENGTH_SHORT).show();
                     //Pass data
@@ -96,7 +97,7 @@ public class activity_signup extends AppCompatActivity {
                     myObj.setArguments(bundle);
 
                     startActivity(new Intent(v.getContext(), MainActivity.class));
-                }));
+                })); */
             }
         });
     }
