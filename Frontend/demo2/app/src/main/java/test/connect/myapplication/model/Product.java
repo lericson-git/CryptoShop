@@ -1,6 +1,17 @@
 package test.connect.myapplication.model;
 
-public class Product {
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
+
+@RequiresApi(api = Build.VERSION_CODES.Q)
+public class Product implements Parcelable {
     private Integer id;
     private String name;
     private String description;
@@ -16,7 +27,37 @@ public class Product {
     private Integer buyerId;
     private boolean hasBeenBought;
 
-    public boolean isHasBeenBought() {
+    public Product() {
+        name = "Default Product";
+        p_condition = "Good Condition";
+        description = "This is a test product to make sure things are working properly.";
+        hasBeenBought = false;
+        id = 100;
+        price = 100.00;
+    }
+
+    protected Product(Parcel in) {
+        name = in.readString();
+        p_condition = in.readString();
+        description = in.readString();
+        hasBeenBought = in.readBoolean();
+        id = in.readInt();
+        price = in.readDouble();
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
+
+    public boolean hasBeenBought() {
         return hasBeenBought;
     }
 
@@ -126,5 +167,20 @@ public class Product {
 
     public Integer getId() {
         return id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int i) {
+        out.writeString(name);
+        out.writeString(p_condition);
+        out.writeString(description);
+        out.writeBoolean(hasBeenBought);
+        out.writeInt(id);
+        out.writeDouble(price);
     }
 }
