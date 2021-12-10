@@ -13,7 +13,31 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity_product"
+            android:name=".activity_third"
+            android:exported="true" />
+        <activity
+            android:name=".activity_favorite"
+            android:exported="true" />
+        <activity
+            android:name=".activity_nike"
+            android:exported="true" />
+        <activity
+            android:name=".activity_handclock"
+            android:exported="true" />
+        <activity
+            android:name=".activity_hometest"
+            android:exported="true" />
+        <activity
+            android:name=".activity_lipstick"
+            android:exported="true" />
+        <activity
+            android:name=".activity_plant"
+            android:exported="true" />
+        <activity
+            android:name=".activity_tableclock"
+            android:exported="true" />
+        <activity
+            android:name=".SecondActivity"
             android:exported="true" />
         <activity
             android:name=".demo2"
@@ -35,7 +59,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
